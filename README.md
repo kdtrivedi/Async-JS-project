@@ -60,13 +60,29 @@ If there are any errors writing the file, the returned promise will reject rathe
 metric module, textMetrics.js
 This module will export a single method, createMetrics(text) which will scan through the text and return an object with the following information based on the lowercased version of the text:
 
-    { totalLetters: total number of letter characters in the text, totalNonLetters: total number of non-letters in the text, totalVowels: total number of vowels in the text (not counting y), totalConsonants: total number of consonants in the text (counting y), totalWords: total number of words in the text; a word is defined as any sequence of letters broken by any not-letter. For example, the phrase to-do is two words; a word does not start until a letter appears, uniqueWords: total number of unique words that appear in the lowercased text, longWords: number of words in the text that are 6 or more letters long; this is a total count of individual words, not unique words, averageWordLength: the average number of letters in a word in the text; this is counting the individual words, not unique words, wordOccurrences: a dictionary of each word and how many times each word occurs in the text. }
+    { totalLetters: total number of letter characters in the text,
+    totalNonLetters: total number of non-letters in the text,
+    totalVowels: total number of vowels in the text (not counting y),
+    totalConsonants: total number of consonants in the text (counting y),
+    totalWords: total number of words in the text;
+    uniqueWords: total number of unique words that appear in the lowercased text, 
+    longWords: number of words in the text that are 6 or more letters long; 
+    averageWordLength: the average number of letters in a word in the text; 
+    wordOccurrences: a dictionary of each word and how many times each word occurs in the text. }
 
     createMetrics("Helllo, my -! This is a great day to say helllo.\n\n\tHelllo! 2 3 4 23")
 
 Will return:
 
-    { totalLetters: 40 // (helllomythisisagreatdaytosayhelllohelllo), totalNonLetters: 27 // (, -! .\n\n\t! 2 3 4 23) totalWords: 11 //(["helllo","my","this","is","a","great","day","to","say","helllo","helllo"] is 11 words), totalVowels: 14, totalConsonants: 26, uniqueWords: 9 //(helllo, my, this, is, a, great, day, to, say), longWords: 3, averageWordLength: 3.6363636363636362 // (this will round differently on each machine", wordOccurrences: { a: 1 day: 1 great: 1 helllo: 3 is: 1 my: 1 say: 1 this: 1 to: 1 } // this may or may not sort in your system; order DOES NOT MATTER }
+    { totalLetters: 40 // (helllomythisisagreatdaytosayhelllohelllo),
+    totalNonLetters: 27 // (, -! .\n\n\t! 2 3 4 23)
+    totalWords: 11 //(["helllo","my","this","is","a","great","day","to","say","helllo","helllo"] is 11 words), 
+    totalVowels: 14,
+    totalConsonants: 26, 
+    uniqueWords: 9 //(helllo, my, this, is, a, great, day, to, say), 
+    longWords: 3,
+    averageWordLength: 3.6363636363636362 // (this will round differently on each machine", 
+    wordOccurrences: { a: 1 day: 1 great: 1 helllo: 3 is: 1 my: 1 say: 1 this: 1 to: 1 } // this may or may not sort in your system; order DOES NOT MATTER }
 
 app.js which will perform the following operation on each of these files
 
